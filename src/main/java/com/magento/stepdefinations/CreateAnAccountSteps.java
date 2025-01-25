@@ -1,8 +1,5 @@
 package com.magento.stepdefinations;
 
-import org.openqa.selenium.By;
-import org.testng.Assert;
-
 import com.magento.base.Info;
 import com.magento.base.Keyword;
 import com.magento.pages.RegistrationPage;
@@ -12,12 +9,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class CreateAnAccountSteps {
-	@Given("the user opens browser and enters valid url")
-	public void the_user_opens_browser_and_enters_valid_url() {
-		Keyword.openBrowser("Chrome");
-		Keyword.launchUrl("https://magento.softwaretestingboard.com/");
-
-	}
 
 	@When("clicks on Create an Account hyperlink")
 	public void clicks_on_hyperlink() {
@@ -35,7 +26,6 @@ public class CreateAnAccountSteps {
 	@Given("the user is on create an account page")
 	public void openCreateAnAccountPage() {
 		CreateAnAccountSteps cap = new CreateAnAccountSteps();
-		cap.the_user_opens_browser_and_enters_valid_url();
 		cap.clicks_on_hyperlink();
 
 	}
