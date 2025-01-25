@@ -1,7 +1,6 @@
 Feature: Create an account
 
 Scenario: Verify user is able to see Create An Account hyperlink and click on that
-Given the user opens browser and enters valid url
 When clicks on Create an Account hyperlink
 Then the user should navigate to "Create New Customer Account" page
 

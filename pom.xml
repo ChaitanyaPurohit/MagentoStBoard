@@ -44,17 +44,6 @@
 			<version>1.6</version>
 		</dependency>
 
-
-		<dependency>
-			<groupId>com.testingshastra</groupId>
-			<artifactId>TestNGDemo</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.testingstastra</groupId>
-			<artifactId>restApiPractices</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
