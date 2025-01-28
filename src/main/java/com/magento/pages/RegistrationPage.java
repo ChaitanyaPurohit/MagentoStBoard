@@ -1,8 +1,11 @@
 package com.magento.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.magento.base.Keyword;
 
@@ -14,6 +17,7 @@ public class RegistrationPage {
 	static By emailField = By.cssSelector("input#email_address");
 	static By passwordField = By.cssSelector("input#password");
 	static By confirmPasswordField = By.cssSelector("input#password-confirmation");
+	static By errorMessages=By.xpath("//div[@class=\"mage-error\"]");
 
 	public void clickOnCreateAnAccount() {
 		Keyword.driver.findElement(createAnAccountSection).click();
@@ -48,5 +52,18 @@ public class RegistrationPage {
 		String pageTitle = titleElement.getText();
 		Assert.assertEquals("My Account", pageTitle);
 	}
-
+//	public List<String> getListOfErrors() {
+//		Keyword key = new Keyword();
+//		List<String> errors=key.getListOfErrorMessages(errorMessages);
+//		return errors;
+//	}
+	public void verifyAllTheFieldDisplaysErrorMessage(String expectedError) {
+		Keyword key = new Keyword();
+		SoftAssert softly=new SoftAssert();
+		for (String errorMessage : key.getListOfErrorMessages(errorMessages)) {
+			softly.assertTrue(errorMessage.contains(expectedError), "Error massage mistmatch: "+ errorMessage);
+		}
+		softly.assertAll();
+	}
+	
 }
