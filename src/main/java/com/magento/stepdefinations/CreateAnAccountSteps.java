@@ -40,11 +40,19 @@ public class CreateAnAccountSteps {
 		rp.enterConfirmPassword(Info.randomPassword);
 
 	}
-
-	@When("clicks on Create an Account button")
-	public void clicks_on_button() {
+	
+	@When("user keeps all the fields as empty")
+	public void user_keeps_all_the_fields_as_empty() {
+	}
+	@When("clicks on {string} button")
+	public void clicks_on_the_button(String buttonText) {
+		Keyword key=new Keyword();
+		key.clickOnButton(buttonText);
+	}
+	@Then("user should get error message {string} bellow eaach field")
+	public void user_should_get_error_message_bellow_eaach_field(String expectedError) {
 		RegistrationPage rp = new RegistrationPage();
-		rp.createAnAccount();
+		rp.verifyAllTheFieldDisplaysErrorMessage(expectedError);
 	}
 
 }
