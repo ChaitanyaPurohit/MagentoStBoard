@@ -19,3 +19,20 @@ When user keeps all the fields as empty
 And clicks on "Create an Account" button 
 Then user should get error message "required field." bellow eaach field
 
+Scenario: User should not able to create an account with existing email
+When user enters existing email while creation of an new account
+And clicks on "Create an Account" button
+Then user should get error message followed by "There is already an account with this email address"
+
+
+Scenario: User should not able to create an account with invalid email format
+When user enters invalid email format while creation of an new account
+And clicks on "Create an Account" button
+Then user should get error message as "Please enter a valid email address (Ex: johndoe@domain.com)." in element "email_address-error"
+
+
+Scenario: User should not able to create an account if confirm password does not matching with password
+When user enters different password is both Password
+And confirm password field while account creation
+And clicks on "Create an Account" button
+Then user should get error message as "Please enter the same value again." in element "password-confirmation-error"

@@ -12,7 +12,7 @@ public class RegistrationPageTestCases extends TestBase {
 	public static void createAccountForNewUserWithValidData() {
 		RegistrationPage registrationPage = new RegistrationPage();
 
-		registrationPage.clickOnCreateAnAccount();
+		registrationPage.clickOnCreateAnAccountHyperlink();
 		registrationPage.enterFirstName(Info.randomFirstName);
 		registrationPage.enterLastName("Purohit");
 		registrationPage.enterEmail(Info.randomEmail);

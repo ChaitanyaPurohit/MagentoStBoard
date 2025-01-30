@@ -1,5 +1,8 @@
 package com.magento.stepdefinations;
 
+import org.openqa.selenium.By;
+import org.testng.Assert;
+
 import com.magento.base.Info;
 import com.magento.base.Keyword;
 import com.magento.pages.RegistrationPage;
@@ -13,7 +16,7 @@ public class CreateAnAccountSteps {
 	@When("clicks on Create an Account hyperlink")
 	public void clicks_on_hyperlink() {
 		RegistrationPage rp = new RegistrationPage();
-		rp.clickOnCreateAnAccount();
+		rp.clickOnCreateAnAccountHyperlink();
 	}
 
 	@Then("the user should navigate to {string} page")
@@ -53,6 +56,49 @@ public class CreateAnAccountSteps {
 	public void user_should_get_error_message_bellow_eaach_field(String expectedError) {
 		RegistrationPage rp = new RegistrationPage();
 		rp.verifyAllTheFieldDisplaysErrorMessage(expectedError);
+	}
+	@When("user enters existing email while creation of an new account")
+	public void user_enters_existing_email() {
+		RegistrationPage rp = new RegistrationPage();
+		rp.enterFirstName(Info.randomFirstName);
+		rp.enterLastName("Purohit");
+		rp.enterExistingEmail("purohit.chaitanyas@gmail.com");
+		rp.enterPassword(Info.randomPassword);
+		rp.enterConfirmPassword(Info.randomPassword);
+	}
+	@Then("user should get error message followed by {string}")
+	public void verifyErrorMessage(String expectedError) {
+		RegistrationPage rp = new RegistrationPage();
+		rp.verifyExstingError(expectedError);
+	}
+	@When("user enters invalid email format while creation of an new account")
+	public void user_enters_invalid_email_format_while_creation_of_an_new_account() {
+		RegistrationPage rp = new RegistrationPage();
+		rp.enterFirstName(Info.randomFirstName);
+		rp.enterLastName("Purohit");
+		rp.enterExistingEmail("purohit.chaitanyas@.com");
+		rp.enterPassword(Info.randomPassword);
+		rp.enterConfirmPassword(Info.randomPassword);
+	}
+	@Then("user should get error message as {string} in element {string}")
+	public void user_should_get_error_message_as(String expectedError, String id) {
+		RegistrationPage rp = new RegistrationPage();
+		By actId= By.id(id);
+		rp.verifyError(expectedError, actId);
+	}
+	@When("user enters different password is both Password")
+	public void user_enters_different_password_is_both_password() {
+		RegistrationPage rp = new RegistrationPage();
+		rp.enterFirstName(Info.randomFirstName);
+		rp.enterLastName("Purohit");
+		rp.enterExistingEmail("purohit.chaitanyas@.com");
+	}
+	@When("confirm password field while account creation")
+	public void different_password_field_while_account_creation() {
+		RegistrationPage rp = new RegistrationPage();
+		rp.enterPassword(Info.randomPassword);
+		rp.enterMisMatchedConfirmPassword();
+		rp.createAnAccount();
 	}
 
 }

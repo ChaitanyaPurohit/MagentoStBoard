@@ -1,6 +1,6 @@
 package com.magento.pages;
 
-import java.util.List;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,8 +18,10 @@ public class RegistrationPage {
 	static By passwordField = By.cssSelector("input#password");
 	static By confirmPasswordField = By.cssSelector("input#password-confirmation");
 	static By errorMessages=By.xpath("//div[@class=\"mage-error\"]");
+	static By existingEmailError =By.cssSelector("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");
+	static By inValidEmailError = By.cssSelector("#email_address-error");
 
-	public void clickOnCreateAnAccount() {
+	public void clickOnCreateAnAccountHyperlink() {
 		Keyword.driver.findElement(createAnAccountSection).click();
 	}
 
@@ -42,6 +44,9 @@ public class RegistrationPage {
 	public void enterConfirmPassword(String ConfirmPassword) {
 		Keyword.driver.findElement(confirmPasswordField).sendKeys(ConfirmPassword);
 	}
+	public void enterMisMatchedConfirmPassword() {
+	Keyword.driver.findElement(confirmPasswordField).sendKeys("CDh@123ADF");;
+	}
 
 	public void createAnAccount() {
 		Keyword.driver.findElement(confirmPasswordField).submit();
@@ -52,18 +57,24 @@ public class RegistrationPage {
 		String pageTitle = titleElement.getText();
 		Assert.assertEquals("My Account", pageTitle);
 	}
-//	public List<String> getListOfErrors() {
-//		Keyword key = new Keyword();
-//		List<String> errors=key.getListOfErrorMessages(errorMessages);
-//		return errors;
-//	}
 	public void verifyAllTheFieldDisplaysErrorMessage(String expectedError) {
 		Keyword key = new Keyword();
-		SoftAssert softly=new SoftAssert();
 		for (String errorMessage : key.getListOfErrorMessages(errorMessages)) {
-			softly.assertTrue(errorMessage.contains(expectedError), "Error massage mistmatch: "+ errorMessage);
+			Assert.assertTrue(errorMessage.contains(expectedError), "Error massage mistmatch: "+ errorMessage);
 		}
-		softly.assertAll();
+	}
+	public void enterExistingEmail(String email) {
+		Keyword.driver.findElement(emailField).sendKeys(email);
+	}
+	public void verifyExstingError(String expectedError) {
+		WebElement errorElement = Keyword.driver.findElement(existingEmailError);
+		String actualError=errorElement.getText();
+		Assert.assertTrue(actualError.contains(expectedError));
+	}
+	public void verifyError(String expectedError, By actualError) {
+		WebElement errorElement = Keyword.driver.findElement(actualError);
+		String actualError1=errorElement.getText();
+		Assert.assertEquals(actualError1, expectedError);
 	}
 	
 }
