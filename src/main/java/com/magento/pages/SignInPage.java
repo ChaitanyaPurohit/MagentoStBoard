@@ -22,13 +22,13 @@ public class SignInPage {
 	public void enterEmail(String email) {
 		Keyword.driver.findElement(emailField).sendKeys(email);
 	}
+	public void enterInvalidEmail(String email) {
+		Keyword.driver.findElement(emailField).sendKeys(email);
+	}
+
 
 	public void enterPassword(String password) {
 		Keyword.driver.findElement(passwordField).sendKeys(password);
-	}
-
-	public void signIn() {
-		Keyword.driver.findElement(passwordField).submit();
 	}
 
 	public void succesfullySignedIn() {

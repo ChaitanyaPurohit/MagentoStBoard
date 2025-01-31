@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import com.magento.base.Info;
 import com.magento.base.TestBase;
 import com.magento.pages.RegistrationPage;
+import com.magento.stepdefinations.CreateAnAccountSteps;
 
 public class RegistrationPageTestCases extends TestBase {
 
@@ -21,6 +22,13 @@ public class RegistrationPageTestCases extends TestBase {
 		registrationPage.createAnAccount();
 		
 
+	}
+	@Test
+	public static void ableToClick() {
+		RegistrationPage rp = new RegistrationPage();
+		rp.clickOnCreateAnAccountHyperlink();
+		CreateAnAccountSteps c=new CreateAnAccountSteps();
+		c.the_user_should_navigate_to_page("Create New Customer Account");
 	}
 
 }

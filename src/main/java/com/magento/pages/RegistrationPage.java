@@ -5,8 +5,6 @@ package com.magento.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
-
 import com.magento.base.Keyword;
 
 public class RegistrationPage {
@@ -18,7 +16,6 @@ public class RegistrationPage {
 	static By passwordField = By.cssSelector("input#password");
 	static By confirmPasswordField = By.cssSelector("input#password-confirmation");
 	static By errorMessages=By.xpath("//div[@class=\"mage-error\"]");
-	static By existingEmailError =By.cssSelector("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");
 	static By inValidEmailError = By.cssSelector("#email_address-error");
 
 	public void clickOnCreateAnAccountHyperlink() {
@@ -28,8 +25,13 @@ public class RegistrationPage {
 	public void enterFirstName(String firstName) {
 		Keyword.driver.findElement(firstNameField).sendKeys(firstName);
 	}
-
+	public void enterFirstNameAsNumber(String firstName) {
+		Keyword.driver.findElement(firstNameField).sendKeys(firstName);
+	}
 	public void enterLastName(String LastName) {
+		Keyword.driver.findElement(lastNameField).sendKeys(LastName);
+	}
+	public void enterLastNameAsNumber(String LastName) {
 		Keyword.driver.findElement(lastNameField).sendKeys(LastName);
 	}
 
@@ -66,8 +68,8 @@ public class RegistrationPage {
 	public void enterExistingEmail(String email) {
 		Keyword.driver.findElement(emailField).sendKeys(email);
 	}
-	public void verifyExstingError(String expectedError) {
-		WebElement errorElement = Keyword.driver.findElement(existingEmailError);
+	public void verifyExstingError(String expectedError, String dataBind) {
+		WebElement errorElement = Keyword.driver.findElement(By.cssSelector("div[data-bind='"+dataBind+"']"));
 		String actualError=errorElement.getText();
 		Assert.assertTrue(actualError.contains(expectedError));
 	}
