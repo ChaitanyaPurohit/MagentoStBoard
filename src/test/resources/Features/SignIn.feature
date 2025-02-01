@@ -1,4 +1,4 @@
-Feature: Log-In with valid data
+Feature: User Sign-In
 
 Background: 
 Given user clicks on Sign In hyperlink
@@ -20,15 +20,20 @@ Then user should get error message "required field." bellow eaach field
 Scenario: User trying to sign in with un-registered email address
 When user enteres un-registered email id while signing in
 And click on "Sign In" button 
-Then user should get error message followed by "The account sign-in was incorrect" in bind "html: $parent.prepareMessageForHtml(message.text)"
+Then user should get allert message followed by "The account sign-in was incorrect" in bind "html: $parent.prepareMessageForHtml(message.text)"
 
 Scenario: User trying to sign in with incorrect password
 When user enteres incorrect password while signing in
 And click on "Sign In" button 
-Then user should get error message followed by "The account sign-in was incorrect" in bind "html: $parent.prepareMessageForHtml(message.text)"
+Then user should get allert message followed by "The account sign-in was incorrect" in bind "html: $parent.prepareMessageForHtml(message.text)"
 
 Scenario: User should able to see Forget Password hyperlink and click on that
 When user clicks on Forgot Your Password? hyperlink
 Then the user should navigate to "Forgot Your Password?" page 
 
+Scenario: User should able to use forget password functionality with valid email
+Given user is on Forgot Your Password? page
+When user enters valid email while forgetting password
+And click on "Reset My Password" button
+Then user should get allert message followed by "If there is an account associated with" in bind "html: $parent.prepareMessageForHtml(message.text)" 
 

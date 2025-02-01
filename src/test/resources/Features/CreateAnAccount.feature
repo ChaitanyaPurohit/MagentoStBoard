@@ -22,7 +22,7 @@ Then user should get error message "required field." bellow eaach field
 Scenario: User should not able to create an account with existing email
 When user enters existing email while creation of an new account
 And clicks on "Create an Account" button
-Then user should get error message followed by "There is already an account with this email address" in bind "html: $parent.prepareMessageForHtml(message.text)"
+Then user should get allert message followed by "There is already an account with this email address" in bind "html: $parent.prepareMessageForHtml(message.text)"
 
 
 Scenario: User should not able to create an account with invalid email format
