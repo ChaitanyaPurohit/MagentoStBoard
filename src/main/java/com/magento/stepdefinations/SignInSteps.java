@@ -2,6 +2,8 @@ package com.magento.stepdefinations;
 
 
 
+import org.openqa.selenium.By;
+
 import com.magento.base.Keyword;
 import com.magento.pages.SignInPage;
 
@@ -30,11 +32,26 @@ public class SignInSteps {
 
 	}
 
-	@When("click on sign in button")
-	public void click_on_sign_in_button() {
-		SignInPage sip = new SignInPage();
-		sip.signIn();
+	@When("click on {string} button")
+	public void click_on_sign_in_button(String buttonName) {
+		Keyword key=new Keyword();
+		key.clickOnButton(buttonName);
 	}
-
-	
+	@When("user enteres un-registered email id while signing in")
+	public void user_enteres_invalid_email_id_while_signing_in( ) {
+		SignInPage sip=new SignInPage();
+		sip.enterInvalidEmail("chaitanya@gmail.com");
+		sip.enterPassword("B@laji7799");
+		
+	}
+	@When("user enteres incorrect password while signing in")
+	public void user_enteres_incorrect_password_while_signing_in() {
+		SignInPage sip=new SignInPage();
+		sip.enterInvalidEmail("purohit.chaitanyas@gmail.com");
+		sip.enterPassword("B@laji79");
+	}
+	@When("user clicks on Forgot Your Password? hyperlink")
+	public void clickOnForgetPasswordLink() {
+		Keyword.driver.findElement(By.cssSelector("a.action.remind>span")).click();;
+	}
 }

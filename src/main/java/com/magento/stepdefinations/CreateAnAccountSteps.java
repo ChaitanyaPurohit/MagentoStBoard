@@ -47,6 +47,7 @@ public class CreateAnAccountSteps {
 	@When("user keeps all the fields as empty")
 	public void user_keeps_all_the_fields_as_empty() {
 	}
+	
 	@When("clicks on {string} button")
 	public void clicks_on_the_button(String buttonText) {
 		Keyword key=new Keyword();
@@ -66,10 +67,10 @@ public class CreateAnAccountSteps {
 		rp.enterPassword(Info.randomPassword);
 		rp.enterConfirmPassword(Info.randomPassword);
 	}
-	@Then("user should get error message followed by {string}")
-	public void verifyErrorMessage(String expectedError) {
+	@Then("user should get error message followed by {string} in bind {string}")
+	public void verifyErrorMessage(String expectedError, String dataBind) {
 		RegistrationPage rp = new RegistrationPage();
-		rp.verifyExstingError(expectedError);
+		rp.verifyExstingError(expectedError, dataBind);
 	}
 	@When("user enters invalid email format while creation of an new account")
 	public void user_enters_invalid_email_format_while_creation_of_an_new_account() {
@@ -99,6 +100,29 @@ public class CreateAnAccountSteps {
 		rp.enterPassword(Info.randomPassword);
 		rp.enterMisMatchedConfirmPassword();
 		rp.createAnAccount();
+	}
+	@When("user enters numbers in firstName")
+	public void user_enters_numbers_in_first_name() {
+		RegistrationPage rp = new RegistrationPage();
+		rp.enterFirstNameAsNumber("12345");
+		rp.enterLastNameAsNumber("6789");
+	}
+	@When("lastname field while account creation")
+	public void lastname_field_while_account_creation() {
+		RegistrationPage rp = new RegistrationPage();
+		rp.enterLastNameAsNumber("6789");
+		rp.enterEmail(Info.randomEmail);
+		rp.enterPassword(Info.randomPassword);
+		rp.enterConfirmPassword(Info.randomPassword);
+		rp.createAnAccount();
+		
+	}
+	@Then("the user should not navigate to {string} page")
+	public void the_user_should_not_navigate_to_page(String unExpectedTitle) {
+		String actualTitle=Keyword.getTitleForCurrentPage();
+		if (unExpectedTitle.equals(actualTitle)) {
+			Assert.fail("User is still able to create and account");
+		}
 	}
 
 }
