@@ -9,19 +9,10 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-<<<<<<< HEAD
-import org.openqa.selenium.interactions.Actions;
-import com.magento.base.Keyword;
-import com.magento.base.WaitFor;
-=======
-import org.openqa.selenium.devtools.v129.systeminfo.model.GPUDevice;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
-
 import com.magento.base.Keyword;
 import com.magento.base.WaitFor;
 import com.magento.pages.GearsPage;
->>>>>>> a8e0716 (Chages 2.0 on 03/02/25)
+
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -31,13 +22,14 @@ public class GearSectionSteps {
 
 	@Given("User is on the Gear page")
 	public void onGearPage() {
-		GearsPage gp=new GearsPage();
+		GearsPage gp = new GearsPage();
 		gp.clickOnGearSection();
+		Keyword.driver.findElement(By.xpath("(//span[contains(text(),'Gear')])[1]")).click();
 	}
 
 	@Then("User should see the categories {string}, {string}, and {string}")
 	public void verifyCategories(String category1, String category2, String category3) {
-		GearsPage gp=new GearsPage();
+		GearsPage gp = new GearsPage();
 		List<WebElement> categories = gp.getCategoriesList();
 		String categoriesText = categories.stream().map(WebElement::getText).reduce("", (a, b) -> a + " " + b);
 		assertTrue(categoriesText.contains(category1) && categoriesText.contains(category2)
@@ -46,15 +38,15 @@ public class GearSectionSteps {
 
 	@When("User selects the {string} category")
 	public void userSelectsCategory(String category) {
-		GearsPage gp=new GearsPage();
+		GearsPage gp = new GearsPage();
 		gp.clickOnCategory(category);
 	}
 
 	@Then("User should see the list of bags")
 	public void userShouldSeeListOfBags() {
-		GearsPage gp=new GearsPage();
+		GearsPage gp = new GearsPage();
 		List<WebElement> bagItems = gp.getBagsSearchList();
-	    assertFalse(bagItems.isEmpty());
+		assertFalse(bagItems.isEmpty());
 	}
 
 	@Then("The page should display {string} bags available")
@@ -117,10 +109,9 @@ public class GearSectionSteps {
 
 	@Then("The comparison page should display both products")
 	public void verifyComparisonPage() {
-		GearsPage gp=new GearsPage();
+		GearsPage gp = new GearsPage();
 		List<WebElement> comparedItems = gp.getComparisonList();
 		WaitFor.elementsToBeVisible(comparedItems);
-
 		assertEquals(2, comparedItems.size());
 	}
 }
