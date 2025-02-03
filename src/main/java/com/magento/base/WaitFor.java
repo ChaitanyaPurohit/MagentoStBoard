@@ -1,6 +1,7 @@
 package com.magento.base;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ public class WaitFor {
 	private static FluentWait<WebDriver> wait;
 	static {
 		wait = new FluentWait<WebDriver>(Keyword.driver);
-		wait.withTimeout(Duration.ofSeconds(20));
+		wait.withTimeout(Duration.ofSeconds(25));
 		wait.ignoring(NoSuchElementException.class);
 	}
 
@@ -28,5 +29,8 @@ public class WaitFor {
 	
 	public static void elementToBeVisible(WebElement element) {
 		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	public static void elementsToBeVisible(List<WebElement> elements) {
+		wait.until(ExpectedConditions.visibilityOfAllElements(elements));
 	}
 }

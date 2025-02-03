@@ -67,7 +67,7 @@ public class CreateAnAccountSteps {
 		rp.enterPassword(Info.randomPassword);
 		rp.enterConfirmPassword(Info.randomPassword);
 	}
-	@Then("user should get error message followed by {string} in bind {string}")
+	@Then("user should get allert message followed by {string} in bind {string}")
 	public void verifyErrorMessage(String expectedError, String dataBind) {
 		RegistrationPage rp = new RegistrationPage();
 		rp.verifyExstingError(expectedError, dataBind);

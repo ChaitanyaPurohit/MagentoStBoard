@@ -3,11 +3,12 @@ package com.magento.stepdefinations;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.magento.base.Keyword;
 import com.magento.pages.SignInPage;
 
-
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -50,8 +51,18 @@ public class SignInSteps {
 		sip.enterInvalidEmail("purohit.chaitanyas@gmail.com");
 		sip.enterPassword("B@laji79");
 	}
+	@Given("user is on Forgot Your Password? page")
+	public void clickOnForgetPassword() {
+		Keyword.driver.findElement(By.xpath("(//span[contains(text(), \"Forgot Your Password?\")])[1]")).click();
+	}
 	@When("user clicks on Forgot Your Password? hyperlink")
 	public void clickOnForgetPasswordLink() {
-		Keyword.driver.findElement(By.cssSelector("a.action.remind>span")).click();;
+		Keyword.driver.findElement(By.cssSelector("a.action.remind>span")).click();
 	}
+	@When("user enters valid email while forgetting password")
+	public void user_enters_valid_email_while_forgetting_password() {
+        Keyword.driver.findElement(By.cssSelector("#email_address")).sendKeys("purohit.chaitanyas@gmail.com");
+		
+	}
+
 }
