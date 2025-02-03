@@ -10,6 +10,7 @@ public class Hooks {
 	public void setUp() throws Exception {
 		Keyword.openBrowser("Chrome");
 		Keyword.launchUrl("https://magento.softwaretestingboard.com/");
+		Keyword.driver.manage().window().maximize();
 	}
 
 	@After
