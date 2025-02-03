@@ -40,7 +40,7 @@ public class Keyword {
 	}
 
 	public static String getTitleForCurrentPage() {
-		String currentPageTitle = Keyword.driver.getTitle();
+		String currentPageTitle = driver.getTitle();
 		return currentPageTitle;
 
 	}
@@ -68,6 +68,11 @@ public class Keyword {
 			}fieldErrors.add(text);
 		}
 		return fieldErrors;
+	}
+	
+	public static List<WebElement> getListOfWebElements(By selector) {
+		List<WebElement> list= driver.findElements(selector);
+		return list;
 	}
 	
 	

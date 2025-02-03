@@ -1,5 +1,40 @@
 package com.magento.pages;
 
-public class GearsPage {
+import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.magento.base.Keyword;
+
+public class GearsPage {
+	static By createAnAccountSection = By.xpath("(//span[contains(text(),'Gear')])[1]");
+	static By categoriesList=By.cssSelector(".sidebar .categories-menu");
+	static By searchBagsList=By.cssSelector(".product-item");
+	static By searchResult=By.cssSelector(".product-item");
+	static By comparisonList=By.cssSelector(".comparison-product");
+	
+	public void clickOnGearSection() {
+		Keyword.driver.findElement(createAnAccountSection).click();
+	}
+	public void clickOnCategory(String category) {
+		Keyword.driver.findElement(By.linkText(category)).click();
+	}
+	
+	public List<WebElement> getCategoriesList() {
+		List<WebElement> list=Keyword.getListOfWebElements(categoriesList);
+		return list;
+	}
+	public List<WebElement> getBagsSearchList() {
+		List<WebElement> list=Keyword.getListOfWebElements(searchBagsList);
+		return list;
+	}
+	public List<WebElement> getSearchList(){
+		List<WebElement> list=Keyword.driver.findElements(searchResult);
+		return list;
+	}
+	public List<WebElement> getComparisonList() {
+		List<WebElement> list=Keyword.driver.findElements(comparisonList);
+		return list;
+	}
 }
