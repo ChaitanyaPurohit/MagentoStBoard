@@ -9,4 +9,3 @@ tags = "@ForSkeleton")
 public class SkelRunner extends AbstractTestNGCucumberTests{
 
 }
- 
