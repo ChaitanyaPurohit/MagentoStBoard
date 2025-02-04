@@ -51,7 +51,10 @@ public class Keyword {
 	}
 
 	public void clickOnButton(String buttonName) {
-		driver.findElement(By.xpath("//span[text()= '" + buttonName + "']")).click();
+		
+		WebElement button=driver.findElement(By.xpath("//span[text()= '" + buttonName + "']"));
+		WaitFor.elementToBeClickable(button);
+		button.click();
 
 	}
 	public List<String> getListOfErrorMessages(By path) {
