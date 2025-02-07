@@ -3,6 +3,7 @@ Feature: Women section navigation
 Background: User is on the Home page
     Given User is on the Home page
     
+    
     Scenario: Verify categories in the Women section
     When User hover on "Women" menu 
     Then User should able to see the following categories:

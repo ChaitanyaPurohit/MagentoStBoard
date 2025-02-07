@@ -1,6 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.testingshastra</groupId>
 	<artifactId>MagnetoSTBoard</artifactId>
@@ -16,7 +16,6 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.27.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -55,6 +54,12 @@
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>7.15.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna-platform -->
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna-platform</artifactId>
+			<version>5.13.0</version>
 		</dependency>
 
 	</dependencies>
