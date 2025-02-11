@@ -12,7 +12,7 @@ Feature: Women section navigation
   @ForSkeleton
   Scenario Outline: Verify subcategories under "Tops"
     When User hover on "Men" category
-    And User hover on a "Tops" of "Women" category
+    And User hover on a "Tops" of "Men" category
     Then User should able to see the following submenus:
       | Jackets               |
       | Hoodies & Sweatshirts |

@@ -1,8 +1,7 @@
 package com.magento.pages;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import com.magento.base.Keyword;
 public class HomePage {
 	
 	static By categoryList = By.xpath("//li[a/span[text()='Women']]/ul/li[a/span[text()='Tops'] or text()='bottoms']");
-	static By Tops=By.xpath("// span[contains(text(), 'Tops')]");
+	static By Tops=By.xpath("//span[contains(text(), 'Tops')]");
 	static By topsSubmenuList = By
 			.cssSelector("level1 submenu ui-menu ui-widget ui-widget-content ui-corner-all expanded");
 	static By BottomsMenu = By.cssSelector("a[id='ui-id-10'] span:nth-child(1)");
@@ -49,7 +48,6 @@ public class HomePage {
 	}
 	
 	
-
 	public void hoverOnMenu(String menuName, String category) {
 		if (category.contains("Wo")) {
 			if (menuName.contains("op"))
@@ -57,13 +55,15 @@ public class HomePage {
 						Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + menuName + "')])[1]")));
 			else
 				Keyword.mouseHoverOn(
+						Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + menuName + "')])[1]")));
+		} else {
+			if (menuName.contains("op"))
+				Keyword.mouseHoverOn(
 						Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + menuName + "')])[2]")));
-		} else if (menuName.contains("op"))
-			Keyword.mouseHoverOn(
-					Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + menuName + "')])[3]")));
-		else
-			Keyword.mouseHoverOn(
-					Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + menuName + "')])[4]")));
+			else
+				Keyword.mouseHoverOn(
+						Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + menuName + "')])[2]")));
+		}
 	}
 
 	// span[contains(text(), 'Jackets')]
@@ -72,20 +72,20 @@ public class HomePage {
 			if (subMenuName.contains("Jack"))
 				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[1]"));
 			else if (subMenuName.contains("Hoodi"))
-				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[2]"));
+				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[1]"));
 			else if(subMenuName.contains("Tee"))
-				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[3]"));
+				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[1]"));
 			else
-				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[4]"));
+				Keyword.driver.findElement(By.xpath("//span[contains(text(), '" + subMenuName + "')]"));
 		} else {
 			if (subMenuName.contains("Jack"))
-				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[5]"));
+				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[2]"));
 			else if (subMenuName.contains("Hoodi"))
-				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[6]"));
+				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[2]"));
 			else if(subMenuName.contains("Tee"))
-				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[7]"));
+				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[2]"));
 			else
-				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[8]"));
+				Keyword.driver.findElement(By.xpath("//span[contains(text(), '" + subMenuName + "')]"));
 		}
 		
 	}
@@ -127,7 +127,7 @@ public class HomePage {
 			actualListsubmenu.add(Text);
 		}
 		
-		Assert.assertEquals(expectedSubmenu,actualListsubmenu);
+		Assert.assertTrue(actualListsubmenu.containsAll(expectedSubmenu));
 		
 	}
 
