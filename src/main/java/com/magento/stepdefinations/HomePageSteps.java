@@ -67,7 +67,7 @@ public class HomePageSteps {
 	public void userShouldAbleToSeeTheFollowingSubmenus(List<String> Submenu) {
 		HomePage hp = new HomePage();
 		List<String> expectedSubmenu = Arrays.asList();
-		hp.verifyDisplayCategories(expectedSubmenu);
+		hp.verifyDisplaySubmenu(expectedSubmenu);
 	}
 
 	
