@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
@@ -50,7 +51,7 @@ public class Keyword {
 		Assert.assertEquals(actualTitle, expectedTitle);
 	}
 
-	public void clickOnButton(String buttonName) {
+	public static void clickOnButton(String buttonName) {
 		
 		WebElement button=driver.findElement(By.xpath("//span[text()= '" + buttonName + "']"));
 		WaitFor.elementToBeClickable(button);
@@ -76,6 +77,12 @@ public class Keyword {
 	public static List<WebElement> getListOfWebElements(By selector) {
 		List<WebElement> list= driver.findElements(selector);
 		return list;
+	}
+	
+	public static void mouseHoverOn(WebElement element) {
+		Actions mouse = new Actions(driver);
+		mouse.moveToElement(element).perform();
+
 	}
 	
 	

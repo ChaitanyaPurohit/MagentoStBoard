@@ -19,7 +19,7 @@ Scenario: Filter products by category
 Scenario: Search for a product in the Gear section
  When user searches for "Yoga"
  Then user should see search results related to "Yoga"
-@ForSkeleton
+
 Scenario: HomePage link on GearPage should redirect user to home page
 When user clicks on Home Page link on gear page
 Then the user should navigate to "Home Page" page
