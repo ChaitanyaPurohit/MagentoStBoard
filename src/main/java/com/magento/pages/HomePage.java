@@ -1,22 +1,29 @@
 package com.magento.pages;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import com.magento.base.Keyword;
 
-public class WomenSectionNavigationPage {
-
-	static By categoryList = By.cssSelector(
-			"body > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > nav:nth-child(1) > ul:nth-child(1) > li:nth-child(2) > ul:nth-child(2)");
+public class HomePage {
+	
+	static By categoryList = By.xpath("//li[a/span[text()='Women']]/ul/li[a/span[text()='Tops'] or text()='bottoms']");
+	static By Tops=By.xpath("// span[contains(text(), 'Tops')]");
 	static By topsSubmenuList = By
 			.cssSelector("level1 submenu ui-menu ui-widget ui-widget-content ui-corner-all expanded");
 	static By BottomsMenu = By.cssSelector("a[id='ui-id-10'] span:nth-child(1)");
 	static By BottomsSubmenuList = By
 			.cssSelector("li[class='level1 nav-2-2 category-item active last parent ui-menu-item'] ul[role='menu']");
 
+	
+	
 	public void hovenOnCategory(String categoryName) {
 		Keyword.mouseHoverOn(Keyword.driver.findElement(By.xpath("//span[contains(text(), '" + categoryName + "')]")));
 
@@ -26,6 +33,22 @@ public class WomenSectionNavigationPage {
 		List<WebElement> list = Keyword.getListOfWebElements(categoryList);
 		return list;
 	}
+	
+	public void clickOnMenu(String category) {
+		Keyword.driver.findElement(By.linkText(category)).click();
+	}
+	
+	public void NavigateToPage(String pageTitle) {
+		Keyword.verifyNavigation(pageTitle);
+		
+	}
+	
+	public void hoverOnMenu(String Menu) {
+		Keyword.mouseHoverOn(Keyword.driver.findElement(Tops));
+
+	}
+	
+	
 
 	public void hoverOnMenu(String menuName, String category) {
 		if (category.contains("Wo")) {
@@ -50,16 +73,21 @@ public class WomenSectionNavigationPage {
 				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[1]"));
 			else if (subMenuName.contains("Hoodi"))
 				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[2]"));
-			else
+			else if(subMenuName.contains("Tee"))
 				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[3]"));
+			else
+				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[4]"));
 		} else {
 			if (subMenuName.contains("Jack"))
 				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[5]"));
 			else if (subMenuName.contains("Hoodi"))
 				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[6]"));
-			else
+			else if(subMenuName.contains("Tee"))
 				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[7]"));
+			else
+				Keyword.driver.findElement(By.xpath("(//span[contains(text(), '" + subMenuName + "')])[8]"));
 		}
+		
 	}
 
 	public List<WebElement> getTopsSubmenuList() {
@@ -75,6 +103,32 @@ public class WomenSectionNavigationPage {
 	public List<WebElement> getBottomSubmenuList() {
 		List<WebElement> list = Keyword.getListOfWebElements(BottomsSubmenuList);
 		return list;
+	}
+	
+	public void verifyDisplayCategories(List<String> expectedCategories) {
+		List<WebElement>actualListWe=Keyword.getListOfWebElements(By.xpath("li[contains(@class, 'level1')]/a"));        
+		List<String> actualList=new ArrayList<String>();
+		for (WebElement element : actualListWe) {
+			String Text=element.getText().trim();
+			System.out.println(Text);
+			actualList.add(Text);
+		}
+		
+		Assert.assertEquals(expectedCategories,actualList);
+		
+	}
+	
+	public void verifyDisplaySubmenu(List<String> expectedSubmenu) {
+		List<WebElement>actualListmenu=Keyword.getListOfWebElements(By.xpath("//li[contains(@class, 'level2')]/a"));        
+		List<String> actualListsubmenu=new ArrayList<String>();
+		for (WebElement element : actualListmenu) {
+			String Text=element.getText().trim();
+			System.out.println(Text);
+			actualListsubmenu.add(Text);
+		}
+		
+		Assert.assertEquals(expectedSubmenu,actualListsubmenu);
+		
 	}
 
 }
