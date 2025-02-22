@@ -1,7 +1,7 @@
 package com.magento.pages;
 
 
-import java.time.Duration;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +38,7 @@ public class HomePage {
 	}
 	
 	public void NavigateToPage(String pageTitle) {
+		System.out.println(pageTitle);
 		Keyword.verifyNavigation(pageTitle);
 		
 	}

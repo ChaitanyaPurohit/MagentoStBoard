@@ -85,5 +85,13 @@ public class Keyword {
 
 	}
 	
+      public static void clickOn(WebElement element) {
+    	  element.click();
+		
+
+	}
+	
+	
+	
 	
 }
