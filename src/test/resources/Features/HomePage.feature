@@ -34,7 +34,6 @@ Feature: Home Page navigation
       | Pants  |
       | Shorts |
 
- 
   Scenario Outline: Verify subcategories under "Bottoms"
     When User hover on "Men" category
     And User hover on a "Bottoms" of "Men" category

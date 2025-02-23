@@ -22,7 +22,7 @@ Feature: category Filtering for Women's Tops page
     When user click on "Category" option from the sidebar
     And user select the "Bras & Tanks" category from the sidebar
     Then user should see only products containing "Bras & Tanks" in Title
-
+@ForSkeleton
   Scenario: verify the product count matches the category count
     When user click on "Category" option from the sidebar
     And user select the "Jackets" category from the sidebar
@@ -64,7 +64,7 @@ Feature: category Filtering for Women's Tops page
     When user click on "Price" option from the sidebar
     And user select the price range "20-30"
     Then user should see only products within "$20.00" - "$29.99"
- @ForSkeleton
+ 
   Scenario: verify sorting products by price (low to high)
     When user click on "Price" option from the sidebar
     And user select the product by "Price: Low to High"
