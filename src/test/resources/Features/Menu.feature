@@ -1,7 +1,7 @@
 Feature: category Filtering for Women's Tops page
 
   Background: User is on the "Women's Top" page
-    Given User is on the "Women's Top" page
+    Given User is on the "Top" page from "Women" category
 
   Scenario: verify that products under "Jackets" category are diplayed
     When user click on "Category" option from the sidebar
@@ -80,7 +80,7 @@ Feature: category Filtering for Women's Tops page
     And user applies the price filter "$20.00 - $29.99"
     And user refresh the page
     Then user should see the applied filter "$20.00 - $29.99" remain selected
-
+@Trial
   Scenario: verify removing price from filter
     When user click on "Price" option from the sidebar
     And user applies the price filter "$20.00 - $29.99"
