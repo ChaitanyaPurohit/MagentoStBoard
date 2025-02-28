@@ -3,6 +3,8 @@ package com.magento.base;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -13,8 +15,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
+import com.magento.stepdefinations.Hooks;
+
 public class Keyword {
 	public static RemoteWebDriver driver;
+	private static final Logger LOG = LogManager.getLogger(Hooks.class);
 
 	public static void openBrowser(String browserName) {
 		if (browserName.equalsIgnoreCase("Firefox")) {
@@ -24,20 +29,19 @@ public class Keyword {
 		} else if (browserName.equalsIgnoreCase("Edge")) {
 			driver = new EdgeDriver();
 		} else {
-			System.out.println("Invalid Browser Name");
+			LOG.info("Invalid Browser Name");
 		}
 
-		System.out.println("Launched: " + browserName + " Browser");
-
+		LOG.info("Launched: " + browserName + " Browser");
 	}
 
 	public static void launchUrl(String url) {
 		driver.get(url);
+		LOG.info("Launched URL");
 	}
 
 	public static void closeBrowser() {
 		driver.quit();
-
 	}
 
 	public static String getTitleForCurrentPage() {
