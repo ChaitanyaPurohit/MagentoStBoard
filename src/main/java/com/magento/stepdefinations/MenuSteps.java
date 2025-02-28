@@ -2,10 +2,7 @@ package com.magento.stepdefinations;
 
 
 
-import java.time.Duration;
 
-import com.assertthat.selenium_shutterbug.core.Shutterbug;
-import com.magento.base.Keyword;
 import com.magento.pages.MenuPage;
 
 import io.cucumber.java.en.Given;
@@ -14,11 +11,11 @@ import io.cucumber.java.en.When;
 
 public class MenuSteps {
 	
-	@Given("User is on the {string} page")
-	public void userIsOnThePage(String Womens) {
+	@Given("User is on the {string} page from {string} category")
+	public void userIsOnThePage(String Menu, String category) {
 		MenuPage mp=new MenuPage();
-		mp.HoverOnCategory();
-		mp.clickOnMenu();
+		mp.HoverOnCategory(category);
+		mp.clickOnMenu(category, Menu);
 	}
 	
 
