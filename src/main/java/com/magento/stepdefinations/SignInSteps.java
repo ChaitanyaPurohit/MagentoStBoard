@@ -3,7 +3,6 @@ package com.magento.stepdefinations;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import com.magento.base.Keyword;
 import com.magento.pages.SignInPage;
@@ -28,8 +27,8 @@ public class SignInSteps {
 	@When("enters valid email id and password")
 	public void enter_valid_email_id_and_password() {
 		SignInPage sip = new SignInPage();
-		sip.enterEmail("purohit.chaitanyas@gmail.com");
-		sip.enterPassword("#pYM4CNELieYGrx");
+		sip.enterEmail(com.magento.utils.Magento.getVAlidEmailForSignIn());
+		sip.enterPassword(com.magento.utils.Magento.getValidPasswordForSignIN());
 
 	}
 

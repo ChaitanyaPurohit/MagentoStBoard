@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="tests" name="Suite">
+	<test name="ChromeTest">
+		<parameter name="browser-name" value="Chrome"></parameter>
+		<classes>
+			<class name="com.magnetocases.RegistrationPageTestCases" />
+			<class name="com.magnetocases.SignInTestCases" />
+			<class name="com.magento.stepdefinations.Hooks" />
+			<class name="com.magento.base.TestBase" />
+		</classes>
+	</test>
+	<test name="FirefoxTest">
+		<parameter name="browser-name" value="Firefox"></parameter>
+		<classes>
+			<class name="com.magnetocases.RegistrationPageTestCases" />
+			<class name="com.magnetocases.SignInTestCases" />
+			<class name="com.magento.stepdefinations.Hooks" />
+			<class name="com.magento.base.TestBase" />
+		</classes>
+	</test>
+	<test name="EdgeTest">
+		<parameter name="browser-name" value="Edge"></parameter>
+		<classes>
+			<class name="com.magnetocases.RegistrationPageTestCases" />
+			<class name="com.magnetocases.SignInTestCases" />
+			<class name="com.magento.stepdefinations.Hooks" />
+			<class name="com.magento.base.TestBase" />
+		</classes>
+	</test>
+</suite> <!--
+Suite -->

@@ -51,7 +51,7 @@ public class Keyword {
 		Assert.assertEquals(actualTitle, expectedTitle);
 	}
 
-	public static void clickOnButton(String buttonName) {
+	public void clickOnButton(String buttonName) {
 		
 		WebElement button=driver.findElement(By.xpath("//span[text()= '" + buttonName + "']"));
 		WaitFor.elementToBeClickable(button);
@@ -90,8 +90,4 @@ public class Keyword {
 		
 
 	}
-	
-	
-	
-	
 }

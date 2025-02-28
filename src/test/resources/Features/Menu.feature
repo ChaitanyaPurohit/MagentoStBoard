@@ -22,7 +22,7 @@ Feature: category Filtering for Women's Tops page
     When user click on "Category" option from the sidebar
     And user select the "Bras & Tanks" category from the sidebar
     Then user should see only products containing "Bras & Tanks" in Title
-@ForSkeleton
+
   Scenario: verify the product count matches the category count
     When user click on "Category" option from the sidebar
     And user select the "Jackets" category from the sidebar
@@ -80,7 +80,7 @@ Feature: category Filtering for Women's Tops page
     And user applies the price filter "$20.00 - $29.99"
     And user refresh the page
     Then user should see the applied filter "$20.00 - $29.99" remain selected
-@Trial
+
   Scenario: verify removing price from filter
     When user click on "Price" option from the sidebar
     And user applies the price filter "$20.00 - $29.99"
