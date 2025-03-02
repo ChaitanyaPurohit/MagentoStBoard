@@ -65,24 +65,30 @@ Feature: category Filtering for Women's Tops page
     And user select the price range "20-30"
     Then user should see only products within "$20.00" - "$29.99"
  
-  Scenario: verify sorting products by price (low to high)
+  Scenario: verify sorting products by price 
     When user click on "Price" option from the sidebar
-    And user select the product by "Price: Low to High"
+    And user click on sort By filter
+    And user select "Price" option from filter
     Then user should see product sorted in ascending order of price
+
 
   Scenario: verify sorting products by price (high to low)
     When user click on "Price" option from the sidebar
-    And user select the product by "Price: High to Low"
+    And user click on sort By filter
+    And user select "Price" option from filter
+    And user select the product by Price "High to Low"
     Then user should see product sorted in descending order of price
+
 
   Scenario: verify price filter persistence after page reload
     When user click on "Price" option from the sidebar
-    And user applies the price filter "$20.00 - $29.99"
+    And user select the price range "20-30"
     And user refresh the page
     Then user should see the applied filter "$20.00 - $29.99" remain selected
 
+
   Scenario: verify removing price from filter
     When user click on "Price" option from the sidebar
-    And user applies the price filter "$20.00 - $29.99"
-    And user remove the applied price filter
-    Then user should see all product without price filtering
+    And user select the price range "20-30"
+    And user click on clear size filter button
+    Then user should see all products displayed again on page
