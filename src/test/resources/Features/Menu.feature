@@ -1,7 +1,7 @@
 Feature: category Filtering for Women's Tops page
 
   Background: User is on the "Women's Top" page
-    Given User is on the "Women's Top" page
+    Given User is on the "Top" page from "Women" category
 
   Scenario: verify that products under "Jackets" category are diplayed
     When user click on "Category" option from the sidebar
