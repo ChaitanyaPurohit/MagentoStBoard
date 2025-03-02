@@ -2,7 +2,7 @@ package com.magento.pages;
 
 import java.time.Duration;
 import java.util.ArrayList;
-
+import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -33,6 +33,11 @@ public class MenuPage {
 	static By productPrices=By.xpath("//span[@class='price']");
 	static By priceList=By.cssSelector(".filter-options-content .price");
     static By sortList=By.xpath("//a[contains(@class,'action sorter-action sort-asc')]");
+	static By filterOption=By.xpath("(//select[contains(@class,'sorter-options')])[1]");
+	static By priceText=By.cssSelector(".price-wrapper span");
+    static By refreshPageElement=By.tagName("body");
+    static By appliedFilter=By.cssSelector(".filter-value");
+    
 	
 	public void HoverOnCategory() {
 		Keyword.mouseHoverOn(Keyword.driver.findElement(womenLink));
@@ -47,8 +52,17 @@ public class MenuPage {
 		Keyword.driver.findElement(clearButton).click();
 	}
 	
-
-	
+    public void clickOnSortByFilter() {
+    	Keyword.driver.findElement(filterOption).click();
+    }
+    
+    public void refreshPage() {
+    	Keyword.driver.findElement(refreshPageElement);
+    }
+    
+   
+    
+    	
 	public void clickOnCategory(String shoppingOption) {
 		if(shoppingOption.contains("Cat")) {
 			Keyword.driver.findElement(By.xpath("//div[normalize-space()='"+ shoppingOption +"']")).click();
@@ -150,22 +164,41 @@ public class MenuPage {
 		Keyword.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		if(priceRange.contains("20")) {
 		WebElement element=	Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price="+priceRange+"')]"));
-		System.out.println(element);
 		element.click();
-//		}else if(priceRange.contains("30")){
-//			Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price='"+ priceRange +"'')]")).click();
-//		}else if(priceRange.contains("40")){
-//			Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price='"+ priceRange +"'')]")).click();
-//		}else if(priceRange.contains("50")){
-//			Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price='"+ priceRange +"'')]")).click();
-//		}else if(priceRange.contains("60")){
-//			Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price='"+ priceRange +"'')]")).click();
-//		}else if(priceRange.contains("70")){
-//			Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price='"+ priceRange +"'')]")).click();
-//		}else {
-//			Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price='"+ priceRange +"'')]")).click();
-		}
+		}else if(priceRange.contains("30")){
+			WebElement element=	Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price="+priceRange+"')]"));
+			element.click();
+		}else if(priceRange.contains("40")){
+			WebElement element=	Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price="+priceRange+"')]"));
+			element.click();
+		}else if(priceRange.contains("50")){
+			WebElement element=	Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price="+priceRange+"')]"));
+			element.click();
+		}else if(priceRange.contains("60")){
+			WebElement element=	Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price="+priceRange+"')]"));
+			element.click();		
+		}else if(priceRange.contains("70")){
+			WebElement element=	Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price="+priceRange+"')]"));
+			element.click();		
+		}else {
+			WebElement element=	Keyword.driver.findElement(By.xpath("//ol[@class='items']/li/a[contains(@href,'price="+priceRange+"')]"));
+			element.click();		
+			}
 
+	}
+	
+	
+	public void sortByOptionFilter(String filterOptions) {
+		if(filterOptions.contains("Posi")) {
+			Keyword.driver.findElement(By.xpath("(//select[contains(@class,'sorter-options')])[1]/option[contains(text(),'"+filterOptions+"')]")).click();
+		}else if(filterOptions.contains("Pric")){
+			Keyword.driver.findElement(By.xpath("(//select[contains(@class,'sorter-options')])[1]/option[contains(text(),'"+filterOptions+"')]")).click();
+
+		}else if(filterOptions.contains("Produc")){
+			Keyword.driver.findElement(By.xpath("(//select[contains(@class,'sorter-options')])[1]/option[contains(text(),'"+filterOptions+"')]")).click();
+		}else {
+			System.out.println("categoty not found");
+		}
 	}
 	
 	public void displayProductNames(String ExcpectedText) {
@@ -257,6 +290,48 @@ public class MenuPage {
 
 	}
 	
+	public void setByOrder(String orderName) {
+		WebElement sortButton=Keyword.driver.findElement(By.xpath("(//a[contains(@class,'action sorter-action')])[1]"));
+		if(orderName.contains("asc")) {
+			System.out.println("click on ascending");
+			sortButton.click();
+		}else if(orderName.contains("desc")) {
+			System.out.println("click on descnding");
+			sortButton.click();
+		}else {
+			System.out.println("set order option not found");
+		}
+		
+		
+	}
+	
+	public List<Double> getProductPrices() {
+		
+		List<WebElement> priceList=Keyword.getListOfWebElements(priceText);
+		List<Double> prices=new ArrayList<>();
+		for (WebElement priceElement : priceList) {
+			String priceText=priceElement.getText().replace("$","");
+			prices.add(Double.parseDouble(priceText));
+		}
+		return prices;
+	}
+	
+	public List<Double> getSortedAscending() {
+		List<Double> sortedprices=new ArrayList<>(getProductPrices());
+		Collections.sort(sortedprices);
+		return sortedprices;
+		
+	}
+	public List<Double> getSortedDescending() {
+		List<Double> sortedprices=new ArrayList<>(getProductPrices());
+		sortedprices.sort(Collections.reverseOrder());
+		return sortedprices;
+		
+	}
+	
+	public String getAppliedFilterText() {
+		return Keyword.driver.findElement(appliedFilter).getText();
+	}
 	
 
 }

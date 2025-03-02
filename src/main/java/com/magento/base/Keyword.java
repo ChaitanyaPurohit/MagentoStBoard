@@ -87,10 +87,11 @@ public class Keyword {
 	
       public static void clickOn(WebElement element) {
     	  element.click();
-		
-
 	}
-	
+	 
+      public static void refreshPage() {
+    	  driver.navigate().refresh();
+      }
 	
 	
 	

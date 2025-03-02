@@ -1,8 +1,9 @@
 package com.magento.stepdefinations;
 
-
-
 import java.time.Duration;
+import java.util.List;
+
+import org.testng.Assert;
 
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.magento.base.Keyword;
@@ -94,63 +95,85 @@ public class MenuSteps {
 		mp.clickOnCategory(price);
 	    
 	}
-	@When("user remove the applied price filter")
-	public void user_remove_the_applied_price_filter() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-	@Then("user should see all product without price filtering")
-	public void user_should_see_all_product_without_price_filtering() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	
+	@When("user select the product by Price {string}")
+	public void userSelectTheProductBy(String priceFilter) {
+		MenuPage mp=new MenuPage();
+		String setorder;
+		if(priceFilter=="Low to High") {
+			setorder="sort-asc";
+			mp.setByOrder(setorder);
+		}else {
+			setorder="sort-desc";
+			mp.setByOrder(setorder);
+		}
+		
 	}
 	
 	
-	
-	@When("user select the product by {string}")
-	public void user_select_the_product_by(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@When("user click on sort By filter")
+	public void userClickOnSortByFilter() {
+		MenuPage mp=new MenuPage();
+		mp.clickOnSortByFilter();
+		
 	}
+	
+	@When("user select {string} option from filter")
+	public void userSelectOptionFromFilter(String priceoption) {
+		MenuPage mp=new MenuPage();
+		mp.sortByOptionFilter(priceoption);
+	}
+	
+	
 	@Then("user should see product sorted in ascending order of price")
-	public void user_should_see_product_sorted_in_ascending_order_of_price() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void userShouldSeeProductSortedInAscendingOrderOfPrice() {
+		MenuPage mp=new MenuPage();
+		List<Double> actualPrices=mp.getProductPrices();
+		List<Double> expectedPrices=mp.getSortedAscending();
+		Assert.assertEquals(actualPrices, expectedPrices,"products are not sorted in ascending order");
+		
+		
 	}
 	
-	
-	
-
 	
 	@When("user refresh the page")
-	public void user_refresh_the_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void userRefreshThePage() {
+		MenuPage mp=new MenuPage();
+		mp.refreshPage();
+		
+		
 	}
+	
 	@Then("user should see the applied filter {string} remain selected")
-	public void user_should_see_the_applied_filter_remain_selected(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void userShouldSeeTheAppliedFilterRemainSelected(String expectedFilter) {
+		MenuPage mp=new MenuPage();
+		String actualFilter=mp.getAppliedFilterText();
+		Assert.assertEquals(actualFilter, expectedFilter,"price filter did not persist after page load");
+		
 	}
 
 
 	
 	@Then("user should see product sorted in descending order of price")
-	public void user_should_see_product_sorted_in_descending_order_of_price() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void userShouldSeeProductSortedInDescendingOrderOfPrice() {
+		MenuPage mp=new MenuPage();
+		mp.clickOnSortByFilter();
+		List<Double> actualPrices=mp.getProductPrices();
+		List<Double> expectedPrices=mp.getSortedDescending();
+		Assert.assertEquals(actualPrices, expectedPrices,"products are not sorted in descending order");
+		
 	}
 	
 	
 	
 	@When("user select the price range {string}")
-	public void user_select_the_price_range(String priceRange) {
+	public void userSelectThePriceRange(String priceRange) {
 		MenuPage mp=new MenuPage();
 		mp.selectPriceRange(priceRange);
 		
 	}
 	@Then("user should see only products within {string} - {string}")
-	public void user_should_see_only_products_within(String minPrice,String maxPrice) {
+	public void userShouldSeeOnlyProductsWithin(String minPrice,String maxPrice) {
 		MenuPage mp=new MenuPage();
 		mp.verifyFilterPrices(minPrice, maxPrice);
 	}
