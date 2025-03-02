@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import com.magento.base.Keyword;
+import com.magento.base.WaitFor;
 
 public class HomePage {
 	
@@ -34,7 +35,9 @@ public class HomePage {
 	}
 	
 	public void clickOnMenu(String category) {
-		Keyword.driver.findElement(By.linkText(category)).click();
+		WebElement element=Keyword.driver.findElement(By.linkText(category));
+		WaitFor.elementToBeClickable(element);
+		element.click();
 	}
 	
 	public void NavigateToPage(String pageTitle) {

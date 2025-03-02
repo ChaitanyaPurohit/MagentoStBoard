@@ -17,7 +17,7 @@ Feature: Home Page navigation
       | Hoodies & Sweatshirts |
       | Tees                  |
       | Bras & Tanks          |
-@Trial
+
   Scenario Outline: Verify subcategories under "Tops"
     When User hover on "Men" category
     And User hover on a "Tops" of "Men" category

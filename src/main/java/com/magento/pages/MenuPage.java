@@ -219,7 +219,7 @@ public class MenuPage {
 		if(filterOptions.contains("Posi")) {
 			Keyword.driver.findElement(By.xpath("(//select[contains(@class,'sorter-options')])[1]/option[contains(text(),'"+filterOptions+"')]")).click();
 		}else if(filterOptions.contains("Pric")){
-			Keyword.driver.findElement(By.xpath("(//select[contains(@class,'sorter-options')])[1]/option[contains(text(),'"+filterOptions+"')]")).click()
+			Keyword.driver.findElement(By.xpath("(//select[contains(@class,'sorter-options')])[1]/option[contains(text(),'"+filterOptions+"')]")).click();
 		}else if(filterOptions.contains("Produc")){
 			Keyword.driver.findElement(By.xpath("(//select[contains(@class,'sorter-options')])[1]/option[contains(text(),'"+filterOptions+"')]")).click();
 		}else {
