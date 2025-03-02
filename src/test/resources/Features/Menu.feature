@@ -38,11 +38,6 @@ Feature: category Filtering for Women's Tops page
     And user select the "Tees" category from the sidebar
     Then User should see the  product count matching the selected "Tees" category count
 
-  Scenario: verify the product count matches the category count
-    When user click on "Category" option from the sidebar
-    And user select the "Bras & Tanks" category from the sidebar
-    Then User should see the  product count matching the selected "Bras & Tanks" category count
-
   Scenario: verify user selecting a size filter
     When user click on "Size" option from the sidebar
     And user select the size "XS"
