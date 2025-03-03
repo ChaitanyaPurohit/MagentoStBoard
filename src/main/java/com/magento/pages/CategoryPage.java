@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import com.magento.base.Keyword;
 
-public class GearsPage {
+public class CategoryPage {
 	static By gearSection = By.xpath("(//span[contains(text(),'Gear')])[1]");
 	static By categoriesList=By.cssSelector(".sidebar .categories-menu");
 	static By searchBagsList=By.cssSelector(".product-item");
