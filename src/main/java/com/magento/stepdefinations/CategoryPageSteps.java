@@ -12,23 +12,23 @@ import org.openqa.selenium.WebElement;
 
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.magento.base.Keyword;
-import com.magento.pages.GearsPage;
+import com.magento.pages.CategoryPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class GearSectionSteps {
+public class CategoryPageSteps {
 
 	@Given("user is on the Gear page")
 	public void onGearPage() {
-		GearsPage gp = new GearsPage();
+		CategoryPage gp = new CategoryPage();
 		gp.clickOnGearSection();
 	}
 
 	@Then("user should see the categories {string}, {string}, and {string}")
 	public void verifyCategories(String category1, String category2, String category3) {
-		GearsPage gp = new GearsPage();
+		CategoryPage gp = new CategoryPage();
 		List<WebElement> categories = gp.getCategoriesList();
 		String categoriesText = categories.stream().map(WebElement::getText).reduce("", (a, b) -> a + " " + b);
 		assertTrue(categoriesText.contains(category1) && categoriesText.contains(category2)
@@ -37,13 +37,13 @@ public class GearSectionSteps {
 
 	@When("user selects the {string} category")
 	public void userSelectsCategory(String category) {
-		GearsPage gp = new GearsPage();
+		CategoryPage gp = new CategoryPage();
 		gp.clickOnCategory(category);
 	}
 
 	@Then("user should see the list of bags")
 	public void userShouldSeeListOfBags() {
-		GearsPage gp = new GearsPage();
+		CategoryPage gp = new CategoryPage();
 		List<WebElement> bagItems = gp.getBagsSearchList();
 		assertFalse(bagItems.isEmpty());
 	}
@@ -81,7 +81,7 @@ public class GearSectionSteps {
 
 	@Then("user should see search results related to {string}")
 	public void verifySearchResults(String expectedQuery) {
-		GearsPage gp = new GearsPage();
+		CategoryPage gp = new CategoryPage();
 		List<WebElement> results = gp.getSearchList();
 		assertFalse(results.isEmpty());
 		assertTrue(results.stream().anyMatch(el -> el.getText().toLowerCase().contains(expectedQuery.toLowerCase())));
@@ -89,7 +89,7 @@ public class GearSectionSteps {
 	
 	@When("user clicks on Home Page link on gear page")
 	public void clickOnHomePageLink() {
-		GearsPage gp = new GearsPage();
+		CategoryPage gp = new CategoryPage();
 		gp.clickOnGearPageLink();
 	}
 }
