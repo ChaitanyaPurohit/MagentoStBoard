@@ -1,5 +1,7 @@
 package com.magento.base;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -21,7 +24,15 @@ public class Keyword {
 	public static RemoteWebDriver driver;
 	private static final Logger LOG = LogManager.getLogger(Hooks.class);
 
-	public static void openBrowser(String browserName) {
+	public static void openBrowser(String browserName) throws MalformedURLException {
+		boolean isOnGrid=true;
+		if(isOnGrid) {
+			String hubUrl="http://192.168.1.6:4444";
+			ChromeOptions option=new ChromeOptions();
+			option.addArguments("--start-maximized");
+			driver=new RemoteWebDriver(new URL(hubUrl),option);
+
+		}else{
 		if (browserName.equalsIgnoreCase("Firefox")) {
 			driver = new FirefoxDriver();
 		} else if (browserName.equalsIgnoreCase("Chrome")) {
@@ -31,8 +42,8 @@ public class Keyword {
 		} else {
 			LOG.info("Invalid Browser Name");
 		}
-
 		LOG.info("Launched: " + browserName + " Browser");
+}
 	}
 
 	public static void launchUrl(String url) {
