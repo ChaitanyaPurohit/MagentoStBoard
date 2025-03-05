@@ -6,7 +6,7 @@ Given user clicks on Sign In hyperlink
 
 Scenario: Verify user is able to see Sign In hyperlink and click on that
 Then the user should navigate to "Customer Login" page 
-@Trial
+
 Scenario: Successfull sign in with valid credentials
 When enters valid email id and password
 And click on "Sign In" button
