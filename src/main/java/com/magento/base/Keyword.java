@@ -106,4 +106,9 @@ public class Keyword {
       public static void refreshPage() {
     	  driver.navigate().refresh();
       }
+
+	public static void maximizeBrowser() {
+		Keyword.driver.manage().window().maximize();
+		
+	}
 }
