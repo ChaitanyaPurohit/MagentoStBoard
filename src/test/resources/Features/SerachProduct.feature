@@ -1,4 +1,3 @@
-@Trial
 Feature: Search Product Functionality
 
  Background: User is on  Home page
