@@ -26,13 +26,13 @@ public class Keyword {
 
 	public static void openBrowser(String browserName) throws MalformedURLException {
 		boolean isOnGrid=true;
-		if(isOnGrid) {
-			String hubUrl="http://192.168.1.6:4444";
-			ChromeOptions option=new ChromeOptions();
-			option.addArguments("--start-maximized");
-			driver=new RemoteWebDriver(new URL(hubUrl),option);
-
-		}else{
+//		if(isOnGrid) {
+//			String hubUrl="http://192.168.1.6:4444";
+//			ChromeOptions option=new ChromeOptions();
+//			option.addArguments("--start-maximized");
+//			driver=new RemoteWebDriver(new URL(hubUrl),option);
+//
+//		}else{
 		if (browserName.equalsIgnoreCase("Firefox")) {
 			driver = new FirefoxDriver();
 		} else if (browserName.equalsIgnoreCase("Chrome")) {
@@ -43,7 +43,7 @@ public class Keyword {
 			LOG.info("Invalid Browser Name");
 		}
 		LOG.info("Launched: " + browserName + " Browser");
-}
+//}
 	}
 
 	public static void launchUrl(String url) {
