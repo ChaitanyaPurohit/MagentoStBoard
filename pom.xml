@@ -85,10 +85,10 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.2.5</version>
 				<configuration>
-					<suiteXmlFiles>
-						<suiteXmlFile>pom.xml</suiteXmlFile>
-					</suiteXmlFiles>
-				</configuration>
+                <includes>
+                    <include>SkelRunner.java</include>
+                </includes>
+            </configuration>
 			</plugin>
 		</plugins>
 	</build>
