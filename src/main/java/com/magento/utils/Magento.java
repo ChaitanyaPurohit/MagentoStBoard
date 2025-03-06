@@ -1,6 +1,7 @@
 package com.magento.utils;
 
 
+
 public class Magento {
 	private static final String base=System.getProperty("user.dir");
 	private static final String filepath = "/src/main/resources/Magento.properties";
@@ -16,5 +17,11 @@ public class Magento {
 	}
 	public static String getUrl(String env) {
 		return PropUtils.getProperty(base+filepath, env+".url");
+	}
+	public static String getBrowserName() {
+		String browserName=PropUtils.getProperty(base+filepath, "browser_name");
+		System.out.println(browserName);
+		return browserName;
+		
 	}
 }
