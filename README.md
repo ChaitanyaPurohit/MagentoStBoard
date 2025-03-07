@@ -7,14 +7,11 @@ This is a Selenium Hybrid Framework.
  - Implemented using **TestNG** and **Cucumber**
  - Build Toold - Maven
  - Implemented Page Object Model Design Pattern
- - Excel TestNG @DataProvider
-  - Shooterbug - To Capture Full Page Screenshot
-
+ 
 ### Browsers Supported
  - Mozilla Firefox
  - Google Chrome
  - Internet Explorer
- - Opera
  - Microsoft Edge
 
 ### Headerless Support
@@ -62,7 +59,7 @@ Extend the framework with custom `utilities`, `listeners`, and more to suit  you
 * Cucumber test case
 * Parallel/sequential execution
 * Selenium grid support
-* Execute through maven, testng.xml, java class[TestRunner.java]
+* Execute through maven, testng.xml, java class[TestRunner.java], feature file
 * Rerun only failed cases
 * Auto/customisable reporting
 * Scenario context
@@ -80,6 +77,8 @@ Extend the framework with custom `utilities`, `listeners`, and more to suit  you
 * Gherkin
 * Maven
 * TestNG
+* Surefire
+  
 ## Test Execution
 
 ### We can execute the test in different ways
@@ -87,8 +86,7 @@ Extend the framework with custom `utilities`, `listeners`, and more to suit  you
 	* Through maven
 		* `mvn clean test` to execute test from `testng.xml` through maven.
 		* Default value for browser and execType is chrome and local
-		* If test need to execute I grid env then pass the execType as grid eg: `-Dcucumber.filter.tags="@All" -Dbrowser=firefox -DexecType=grid`
-	* Through `testng.xml`
+		* Through `testng.xml`
 	* Through the `TestRunner.java` class
 
 In any point the execution in framework is start from `runners.TestRunner.java` class. Test that need to execute are defined in the features files present in the Features folder, The set of test cases are identified by appropriate tag name using the tags section in TestRunner class.
@@ -114,9 +112,6 @@ Test report high level(suit level) configured will be done through `@BeforeClass
 
 **Scenario level configuration:**
 Each common scenario operations like opening and closing Chrome browser, starting and closing test scenario, Adding screenshots for passed test etc. are done through Cucumber hooks present in the com.stepDef.Hooks class. We are using `@Before` and `@After` hooks of cucumber to achieve this.
-
-**Step level configuration:**
-For test step status management are using listener class named `com.utils.TestListener` which implements cucumber plugin `ConcurrentEventListener`. Using this plugin we are managing the status of the test cases by monitoring test steps. We are handling three main status **FAILED, PASSED, SKIPPED**.
 
 ## Logs:
 We are using `slf4j` to implement `log4j`
