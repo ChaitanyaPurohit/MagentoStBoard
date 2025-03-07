@@ -2,21 +2,17 @@
 
 [![N|Solid](http://www.seleniumhq.org/images/selenium-logo.png)](http://www.seleniumhq.org/) 
 
-This is a Selenium Hybrid Framework.
- - Written in **JAVA**
+#### This is a Selenium Hybrid Framework.
+ - Written in **JAVA** (V - JDK21)
  - Implemented using **TestNG** and **Cucumber**
- - Build Toold - Maven
+ - Build Toold - Maven (V - 3.9.9)
  - Implemented Page Object Model Design Pattern
  
 ### Browsers Supported
- - Mozilla Firefox
- - Google Chrome
- - Internet Explorer
- - Microsoft Edge
+*Mozilla Firefox, Google Chrome, Internet Explorer,  Microsoft Edge*
 
 ### Headerless Support
- - HTMLUnit 
- - Chrome Headless
+ *Chrome Headless, HTMLUnit*
 
 ### Platform Support
  - Windows
@@ -25,50 +21,18 @@ This is a Selenium Hybrid Framework.
  - [Allure Reporting]([https://allurereport.org/])
  
 ---
- # ✳️ Key Features
- 
-#### 🟨 Modular Structure:
-The framework follows a `modular design`, allowing you to organize your test cases efficiently.
-
-#### 🟨 Configuration Management:
-Easily configure `test environments`, `browsers`, and other settings using external `properties files`.
-
-#### 🟨 Selenium WebDriver Integration:
-The framework seamlessly integrates with `Selenium WebDriver` for easy web automation.
-
-#### 🟨 TestNG Integration:
-Harness the full capabilities of `TestNG` for test `execution`, `parallelization`, and `reporting`.
-
-#### 🟨 Logging and Reporting:
-Detailed `logs` and comprehensive test reports help you identify issues quickly.
-
-#### 🟨 Page Object Model (POM):
-Implement the `POM design pattern` for cleaner and more maintainable page object classes.
-
-#### 🟨 Data-Driven Testing:
-Execute tests with various `excel test` data sets to maximize test coverage.
-
-#### 🟨 Continuous Integration:
-Seamlessly integrate your tests with popular `Github Actions` for automated testing.
-
-#### 🟨 Extensibility:
-Extend the framework with custom `utilities`, `listeners`, and more to suit  your specific needs.
-
----
 ## Features
 * Cucumber test case
 * Parallel/sequential execution
 * Selenium grid support
 * Execute through maven, testng.xml, java class[TestRunner.java], feature file
-* Rerun only failed cases
 * Auto/customisable reporting
 * Scenario context
 * Logs support
 * Configurable environment
 * Interaction helper and wait utils functions
 * Controllable browser version
-* We can control if the test need to continue execution, if the certain number of test is failed.
-  * If we have total of 10 tests, and we need to skip the test after failing first 5 test, We can use this by defining PassPercentageExecutionControlFlag and PassPercentageExecutionControlValue in config property file
+---
  
 ## Prerequisite
 
@@ -123,6 +87,25 @@ We are using `slf4j` to implement `log4j`
 * The output of the test execution like order number, payment id etc. can be logged in report for the later use, so 
   didn't create any other mechanism for that.
 
+  # ✳️ Key Features
+ 
+#### 🟨Framework Modular Structure:
+The framework follows a `modular design`, allowing you to organize your test cases efficiently.
+Implement the `POM design pattern` for cleaner and more maintainable page object classes.
+#### 🟨 Configuration Management:
+Easily configure `test environments`, `browsers`, and other settings using external `properties files`.
+#### 🟨 Selenium WebDriver Integration:
+The framework seamlessly integrates with `Selenium WebDriver` for easy web automation.
+#### 🟨 TestNG Integration:
+Harness the full capabilities of `TestNG` for test `execution`, `parallelization`, and `reporting`.
+#### 🟨 Logging and Reporting:
+Detailed `logs` and comprehensive test reports help you identify issues quickly.
+#### 🟨 Continuous Integration:
+Seamlessly integrate your tests with popular `Github Actions` for automated testing.
+#### 🟨 Extensibility:
+Extend the framework with custom `utilities`, `listeners`, and more to suit  your specific needs.
+
+
 ## Other Features
 * Added Same test case with multiple types of data - Scenario outline mode
 * Added testng file so that we can control the thread count in parallel mode
@@ -138,23 +121,14 @@ We are using `slf4j` to implement `log4j`
 ####  Benefits of POM:
 
 #### 🟨 Modularity: 
-
 POM divides the application into manageable, modular components, making it easier to create and maintain tests.
-
 #### 🟨 Reduced Code Duplication:
-
  Reusable Page Objects reduce code duplication across test cases, leading to more efficient test development.
-
 #### 🟨 Enhanced Collaboration:
-
  Testers and developers can collaborate effectively as they work with well-defined Page Objects.
-
 #### 🟨 Scalability:
-
  POM scales well with growing test suites, ensuring maintainability as the project evolves.
-
 #### 🟨 Improved Debugging:
-
  Isolating issues to specific Page Objects simplifies the debugging process.
 
 **In summary, the `Page Object Model (POM)` is a design pattern that promotes a structured and maintainable approach to web test automation. By representing web pages as Page Objects, it enhances code readability, reusability, and maintainability while reducing code duplication.**
