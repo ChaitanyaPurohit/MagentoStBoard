@@ -8,16 +8,14 @@ import org.testng.Assert;
 import com.magento.base.Keyword;
 
 public class RegistrationPage {
-	static By createAnAccountSection = By
+	private static By createAnAccountSection = By
 			.cssSelector("a[href='https://magento.softwaretestingboard.com/customer/account/create/']");
-	static By firstNameField = By.cssSelector("input#firstname");
-	static By lastNameField = By.cssSelector("input#lastname");
-	static By emailField = By.cssSelector("input#email_address");
-	static By passwordField = By.cssSelector("input#password");
-	static By confirmPasswordField = By.cssSelector("input#password-confirmation");
-	static By errorMessages=By.xpath("//div[@class=\"mage-error\"]");
-	static By inValidEmailError = By.cssSelector("#email_address-error");
-
+	private static By firstNameField = By.cssSelector("input#firstname");
+	private static By lastNameField = By.cssSelector("input#lastname");
+	private static By emailField = By.cssSelector("input#email_address");
+	private static By passwordField = By.cssSelector("input#password");
+	private static By confirmPasswordField = By.cssSelector("input#password-confirmation");
+	private static By errorMessages=By.xpath("//div[@class=\"mage-error\"]");
 	public void clickOnCreateAnAccountHyperlink() {
 		Keyword.driver.findElement(createAnAccountSection).click();
 	}

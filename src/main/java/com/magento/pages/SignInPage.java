@@ -8,9 +8,9 @@ import org.testng.Assert;
 import com.magento.base.Keyword;
 
 public class SignInPage {
-	static By signInSection = By.cssSelector("li[data-label='or']>a");
-	static By emailField = By.cssSelector("input#email");
-	static By passwordField = By.cssSelector("input[title='Password']");
+	private static By signInSection = By.cssSelector("li[data-label='or']>a");
+	private static By emailField = By.cssSelector("input#email");
+	private static By passwordField = By.cssSelector("input[title='Password']");
 
 	static By successMessage1 = By.cssSelector("span[data-ui-id='page-title-wrapper']");
 
